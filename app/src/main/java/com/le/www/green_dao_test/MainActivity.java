@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
         Account account = new Account();
         account.setUserName("wangweijun");
         account.setLoginPassword("123456");
-        account.setPayPassword("pppp");
         accountDao.insert(account);
         Log.d("DaoExample", "Inserted new account, ID: " + account.getId());
     }

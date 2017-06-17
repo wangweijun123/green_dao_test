@@ -17,23 +17,23 @@ public class Account {
     // 如果要改表字段名字，schema version得升级，并且数据库信息全部丢失,所以尽量
     // 别改，可以增加字段
     private String loginPassword;
-    // 增加一个字段，支付密码
-    private String payPassword;
 
     private String addhhhStr;
 
     private String product;
 
+    private String productName;
 
-    @Generated(hash = 1260858068)
-    public Account(Long id, String userName, String loginPassword,
-            String payPassword, String addhhhStr, String product) {
+
+    @Generated(hash = 1395107403)
+    public Account(Long id, String userName, String loginPassword, String addhhhStr, String product,
+            String productName) {
         this.id = id;
         this.userName = userName;
         this.loginPassword = loginPassword;
-        this.payPassword = payPassword;
         this.addhhhStr = addhhhStr;
         this.product = product;
+        this.productName = productName;
     }
 
     @Generated(hash = 882125521)
@@ -69,14 +69,6 @@ public class Account {
         return "[Account] userName:"+userName+", loginPassword:"+ loginPassword;
     }
 
-    public String getPayPassword() {
-        return this.payPassword;
-    }
-
-    public void setPayPassword(String payPassword) {
-        this.payPassword = payPassword;
-    }
-
     public String getAddhhhStr() {
         return this.addhhhStr;
     }
@@ -91,5 +83,13 @@ public class Account {
 
     public void setProduct(String product) {
         this.product = product;
+    }
+
+    public String getProductName() {
+        return this.productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 }
