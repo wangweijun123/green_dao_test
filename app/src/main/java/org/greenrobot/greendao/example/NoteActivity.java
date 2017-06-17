@@ -46,6 +46,9 @@ public class NoteActivity extends AppCompatActivity {
     private Query<Note> notesQuery;
     private NotesAdapter notesAdapter;
 
+
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,7 +63,10 @@ public class NoteActivity extends AppCompatActivity {
         // query all notes, sorted a-z by their text
         notesQuery = noteDao.queryBuilder().orderAsc(NoteDao.Properties.Text).build();
         updateNotes();
+
+
     }
+
 
     private void updateNotes() {
         List<Note> notes = notesQuery.list();

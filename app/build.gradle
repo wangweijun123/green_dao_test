@@ -19,6 +19,10 @@ android {
         }
     }
 }
+// 升级数据库，必须改变version，才生效
+greendao {
+    schemaVersion 8
+}
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
@@ -32,4 +36,6 @@ dependencies {
     compile 'org.greenrobot:greendao:3.2.2' // add library
     // This is only needed if you want to use encrypted databases
     compile 'net.zetetic:android-database-sqlcipher:3.5.6'
+    // 数据库升级避免清空所有数据的帮助类
+//    compile 'com.github.yuweiguocn:GreenDaoUpgradeHelper:v1.4.0'
 }
