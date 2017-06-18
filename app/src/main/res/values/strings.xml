@@ -7,4 +7,19 @@
     <string name="add">Add</string>
     <string name="click_to_remove">Click a note to remove it</string>
 
+    <string name="platform_name">平台名称 : </string>
+    <string name="official_web">官网 : </string>
+    <string name="username">用户名 : </string>
+    <string name="login_password">登录密码 : </string>
+    <string name="pay_password">支付密码 : </string>
+
+    <string name="account_list">账号列表 </string>
+    <string name="account_detail">账号详情 </string>
+    <string name="account_add">添加账号</string>
+    <string name="account_update">修改账号</string>
+    <string name="certification_pwd">验证密码</string>
+
+    <string name="input_password">请输入密码 : </string>
+    <string name="input_password_again">再次输入密码 : </string>
+
 </resources>

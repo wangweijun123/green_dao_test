@@ -18,6 +18,6 @@ public class MySQLiteOpenHelper extends DaoMaster.OpenHelper {
     }
     @Override
     public void onUpgrade(Database db, int oldVersion, int newVersion) {
-        MigrationHelper.migrate(db, AccountDao.class);
+        MigrationHelper.migrate(db, AccountDao.class, NoteDao.class);
     }
 }

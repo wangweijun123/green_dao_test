@@ -63,13 +63,15 @@ public final class MigrationHelper {
                 tempTableName = daoConfig.tablename.concat("_TEMP");
                 StringBuilder dropTableStringBuilder = new StringBuilder();
                 dropTableStringBuilder.append("DROP TABLE IF EXISTS ").append(tempTableName).append(";");
+                Log.d(TAG, "dropTableStringBuilder.toString() : " +dropTableStringBuilder.toString());
                 db.execSQL(dropTableStringBuilder.toString());
 
                 StringBuilder insertTableStringBuilder = new StringBuilder();
                 insertTableStringBuilder.append("CREATE TEMPORARY TABLE ").append(tempTableName);
                 insertTableStringBuilder.append(" AS SELECT * FROM ").append(tableName).append(";");
                 db.execSQL(insertTableStringBuilder.toString());
-                printLog("【Table】" + tableName +"\n ---Columns-->"+getColumnsStr(daoConfig));
+                Log.d(TAG, "insertTableStringBuilder:"+insertTableStringBuilder.toString());
+                        printLog("【Table】" + tableName +"\n ---Columns-->"+getColumnsStr(daoConfig));
                 printLog("【Generate temp table】" + tempTableName);
             } catch (SQLException e) {
                 Log.e(TAG, "【Failed to generate temp table】" + tempTableName, e);
@@ -161,6 +163,17 @@ public final class MigrationHelper {
             try {
                 // get all columns from tempTable, take careful to use the columns list
                 List<String> columns = getColumns(db, tempTableName);
+                // test start
+                Log.d(TAG, "临时表字段 "+tempTableName);
+                for (int m=0; m<columns.size();m++){
+                    Log.d(TAG, columns.get(m));
+                }
+                Log.d(TAG, "#########新表字段##############"+tableName);
+                List<String> columnsNewTable = getColumns(db, tableName);
+                for (int m=0; m<columnsNewTable.size();m++){
+                    Log.d(TAG, columnsNewTable.get(m));
+                }
+                // test end
                 ArrayList<String> properties = new ArrayList<>(columns.size());
                 for (int j = 0; j < daoConfig.properties.length; j++) {
                     String columnName = daoConfig.properties[j].columnName;

@@ -4,36 +4,38 @@ import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Generated;
 
+import java.io.Serializable;
+
 /**
  * Created by wangweijun1 on 2017/6/16.
+ * 如果要改表字段名字，schema version得升级，并且数据库信息全部丢失,所以尽量别改，可以增加字段
  */
 
 @Entity
-public class Account {
+public class Account implements Serializable{
+    public static final long serialVersionUID = 536871008L;
     @Id
     private Long id;
-
+    /** 平台名称 */
+    private String platformName;
+    /** 官网 */
+    private String officialWeb;
+    /** 用户名 */
     private String userName;
-    // 如果要改表字段名字，schema version得升级，并且数据库信息全部丢失,所以尽量
-    // 别改，可以增加字段
+    /** 登录密码 */
     private String loginPassword;
+    /** 支付密码 */
+    private String payPassword;
 
-    private String addhhhStr;
-
-    private String product;
-
-    private String productName;
-
-
-    @Generated(hash = 1395107403)
-    public Account(Long id, String userName, String loginPassword, String addhhhStr, String product,
-            String productName) {
+    @Generated(hash = 1774643570)
+    public Account(Long id, String platformName, String officialWeb, String userName,
+            String loginPassword, String payPassword) {
         this.id = id;
+        this.platformName = platformName;
+        this.officialWeb = officialWeb;
         this.userName = userName;
         this.loginPassword = loginPassword;
-        this.addhhhStr = addhhhStr;
-        this.product = product;
-        this.productName = productName;
+        this.payPassword = payPassword;
     }
 
     @Generated(hash = 882125521)
@@ -66,30 +68,32 @@ public class Account {
 
     @Override
     public String toString() {
-        return "[Account] userName:"+userName+", loginPassword:"+ loginPassword;
+        return "[Account] id:"+id+", userName:"+ userName+", loginPassword:"+ loginPassword
+                +", payPassword:"+payPassword+", platformName:"+platformName+", officialWeb:"+officialWeb;
     }
 
-    public String getAddhhhStr() {
-        return this.addhhhStr;
+    public String getPlatformName() {
+        return this.platformName;
     }
 
-    public void setAddhhhStr(String addhhhStr) {
-        this.addhhhStr = addhhhStr;
+    public void setPlatformName(String platformName) {
+        this.platformName = platformName;
     }
 
-    public String getProduct() {
-        return this.product;
+    public String getOfficialWeb() {
+        return this.officialWeb;
     }
 
-    public void setProduct(String product) {
-        this.product = product;
+    public void setOfficialWeb(String officialWeb) {
+        this.officialWeb = officialWeb;
     }
 
-    public String getProductName() {
-        return this.productName;
+    public String getPayPassword() {
+        return this.payPassword;
     }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
+    public void setPayPassword(String payPassword) {
+        this.payPassword = payPassword;
     }
+
 }
