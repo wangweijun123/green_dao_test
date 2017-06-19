@@ -3,6 +3,7 @@ package org.greenrobot.greendao.example;
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Generated;
+import org.greenrobot.greendao.annotation.NotNull;
 
 import java.io.Serializable;
 
@@ -14,22 +15,25 @@ import java.io.Serializable;
 @Entity
 public class Account implements Serializable{
     public static final long serialVersionUID = 536871008L;
-    @Id
+    @Id(autoincrement = true)
     private Long id;
     /** 平台名称 */
     private String platformName;
     /** 官网 */
     private String officialWeb;
-    /** 用户名 */
+    /** 用户名 Not NULL 是指null，但是不包括空字符串哦，注意*/
+    @NotNull
     private String userName;
     /** 登录密码 */
+    @NotNull
     private String loginPassword;
     /** 支付密码 */
+    @NotNull
     private String payPassword;
 
-    @Generated(hash = 1774643570)
-    public Account(Long id, String platformName, String officialWeb, String userName,
-            String loginPassword, String payPassword) {
+    @Generated(hash = 1583574840)
+    public Account(Long id, String platformName, String officialWeb, @NotNull String userName,
+            @NotNull String loginPassword, @NotNull String payPassword) {
         this.id = id;
         this.platformName = platformName;
         this.officialWeb = officialWeb;

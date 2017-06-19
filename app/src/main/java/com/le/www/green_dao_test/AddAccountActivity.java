@@ -51,7 +51,15 @@ public class AddAccountActivity extends AppCompatActivity {
         account.setPlatformName(platform_name.getText().toString());
         account.setOfficialWeb(official_web.getText().toString());
         account.setUserName(username.getText().toString());
-        account.setLoginPassword(login_pwd.getText().toString());
+        String s = login_pwd.getText().toString();
+        if (s == null) {
+            Log.d("DaoExample", "s == null" );
+        }
+
+        if (s.equals("")) {
+            Log.d("DaoExample", "s.equals(\"\")" );
+        }
+        account.setLoginPassword(s);//  account.setLoginPassword(null);
         account.setPayPassword(pay_pwd.getText().toString());
 
         DaoSession daoSession = ((App) getApplication()).getDaoSession();
