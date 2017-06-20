@@ -4,6 +4,8 @@ import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.NotNull;
+import org.greenrobot.greendao.annotation.Transient;
+import org.greenrobot.greendao.annotation.Unique;
 
 import java.io.Serializable;
 
@@ -17,7 +19,8 @@ public class Account implements Serializable{
     public static final long serialVersionUID = 536871008L;
     @Id(autoincrement = true)
     private Long id;
-    /** 平台名称 */
+    /** 平台名称 独一无二的vale哦*/
+    //@Unique
     private String platformName;
     /** 官网 */
     private String officialWeb;
@@ -31,15 +34,22 @@ public class Account implements Serializable{
     @NotNull
     private String payPassword;
 
-    @Generated(hash = 1583574840)
+    /** 不保存数据库 */
+    @Transient
+    private String product;
+
+    private String productName;
+
+    @Generated(hash = 240786997)
     public Account(Long id, String platformName, String officialWeb, @NotNull String userName,
-            @NotNull String loginPassword, @NotNull String payPassword) {
+            @NotNull String loginPassword, @NotNull String payPassword, String productName) {
         this.id = id;
         this.platformName = platformName;
         this.officialWeb = officialWeb;
         this.userName = userName;
         this.loginPassword = loginPassword;
         this.payPassword = payPassword;
+        this.productName = productName;
     }
 
     @Generated(hash = 882125521)
@@ -98,6 +108,14 @@ public class Account implements Serializable{
 
     public void setPayPassword(String payPassword) {
         this.payPassword = payPassword;
+    }
+
+    public String getProductName() {
+        return this.productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
 }

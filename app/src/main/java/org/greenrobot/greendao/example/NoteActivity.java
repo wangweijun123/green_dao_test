@@ -132,8 +132,11 @@ public class NoteActivity extends AppCompatActivity {
         note.setComment(comment);
         note.setDate(new Date());
         note.setType(NoteType.TEXT);
+        long start = System.currentTimeMillis();
         noteDao.insert(note);
-        Log.d("DaoExample", "Inserted new note, ID: " + note.getId());
+        List<Note> notes = notesQuery.list();
+        Log.d("DaoExample", "Inserted new note, ID: " + note.getId()+", spend time:"+
+                (System.currentTimeMillis()-start));
 
         updateNotes();
     }

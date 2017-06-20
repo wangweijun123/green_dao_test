@@ -63,9 +63,16 @@ public class AddAccountActivity extends AppCompatActivity {
         account.setPayPassword(pay_pwd.getText().toString());
 
         DaoSession daoSession = ((App) getApplication()).getDaoSession();
-        id = daoSession.getAccountDao().insert(account);
-        Log.d("DaoExample", id + " Inserted new account, ID: " + account.getId());
-        Toast.makeText(getApplicationContext(), "添加成功", Toast.LENGTH_SHORT).show();
-        finish();
+        try {
+            id = daoSession.getAccountDao().insert(account);
+            Log.d("DaoExample", id + " Inserted new account, ID: " + account.getId());
+            Toast.makeText(getApplicationContext(), "添加成功", Toast.LENGTH_SHORT).show();
+            finish();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            Toast.makeText(getApplicationContext(), "添加失败", Toast.LENGTH_SHORT).show();
+        }
+
+
     }
 }
