@@ -16,8 +16,9 @@ public class MySQLiteOpenHelper extends DaoMaster.OpenHelper {
     public MySQLiteOpenHelper(Context context, String name, SQLiteDatabase.CursorFactory factory) {
         super(context, name, factory);
     }
+
     @Override
     public void onUpgrade(Database db, int oldVersion, int newVersion) {
-        MigrationHelper.migrate(db, AccountDao.class, NoteDao.class);
+        MigrationHelper.migrate(db, AccountDao.class, NoteDao.class, PictureDao.class, UserDao.class);
     }
 }

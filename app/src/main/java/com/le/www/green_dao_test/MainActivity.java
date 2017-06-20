@@ -22,6 +22,8 @@ import org.greenrobot.greendao.example.App;
 import org.greenrobot.greendao.example.DaoSession;
 import org.greenrobot.greendao.example.Note;
 import org.greenrobot.greendao.example.NotesAdapter;
+import org.greenrobot.greendao.example.Picture;
+import org.greenrobot.greendao.example.User;
 import org.greenrobot.greendao.query.Query;
 
 import java.util.ArrayList;
@@ -249,6 +251,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public void toOneTest(View v) {
+        DaoSession daoSession = ((App) getApplication()).getDaoSession();
+        Picture picture = new Picture();
+        picture.setIcon("http://cixon");
+        long id = daoSession.getPictureDao().insert(picture);
+
+        User user = new User();
+        user.setName("wxj");
+        user.setPictureId(id);
+        user.setPicture(picture);
+
+
+        daoSession.getUserDao().insert(user);
+
+    }
+
 
 
     /**
@@ -285,6 +303,9 @@ public class MainActivity extends AppCompatActivity {
             Log.d("DaoExample", accounts.get(i).toString());
         }
     }
+
+
+
 
 
     @Override

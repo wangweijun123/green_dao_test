@@ -77,6 +77,12 @@
         android:onClick="acompileStatementAndBeginTx"
         android:text="预编译sql与开启事务批量添加账号" />
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="toOneTest"
+        android:text="to one 测试" />
+
 
 
 </LinearLayout>
