@@ -21,7 +21,7 @@ android {
 }
 // 升级数据库，必须改变version，才生效
 greendao {
-    schemaVersion 27
+    schemaVersion 32
 }
 
 dependencies {

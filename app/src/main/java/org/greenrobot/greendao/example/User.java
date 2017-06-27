@@ -87,11 +87,11 @@ public class User {
     }
 
     /** called by internal mechanisms, do not call yourself. */
-    @Generated(hash = 1412118702)
+    @Generated(hash = 158877440)
     public void setPicture(Picture picture) {
         synchronized (this) {
             this.picture = picture;
-            pictureId = picture == null ? null : picture.getPictureId();
+            pictureId = picture == null ? null : picture.getId();
             picture__resolvedKey = pictureId;
         }
     }

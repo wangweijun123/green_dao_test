@@ -1,88 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center_horizontal"
-    android:orientation="vertical">
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="queryList"
-        android:text="查询list" />
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="queryListSize"
-        android:text="查询list size" />
-
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="deleteAll"
-        android:text="删除所有" />
-
-
-
-    <Button
-    android:layout_width="match_parent"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="wrap_content"
-    android:onClick="queryListOrderPlatform"
-    android:text="查询list 排序" />
+    android:layout_width="match_parent">
 
-    <Button
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="queryListAndWhere"
-        android:text="查询list加上where条件" />
+        android:orientation="vertical">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="queryList"
+            android:text="查询list" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="queryListAndMoreWhere"
-        android:text="查询list加上多个where条件" />
-
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="addAccount"
-        android:text="添加账号" />
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="addManyAccount"
-        android:text="添加N个账号" />
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="addManyAccountUseBatch"
-        android:text="批量添加N个账号" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="queryListSize"
+            android:text="查询list size" />
 
 
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="addManyAccountUsePreMethod"
-        android:text="使用原来的方式批量添加账号" />
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="acompileStatementAndBeginTx"
-        android:text="预编译sql与开启事务批量添加账号" />
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="toOneTest"
-        android:text="to one 测试" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="deleteAll"
+            android:text="删除所有" />
 
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="queryListOrderPlatform"
+            android:text="查询list 排序" />
 
-</LinearLayout>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="queryListAndWhere"
+            android:text="查询list加上where条件" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="queryListAndMoreWhere"
+            android:text="查询list加上多个where条件" />
+
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="addAccount"
+            android:text="添加账号" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="addManyAccount"
+            android:text="添加N个账号" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="addManyAccountUseBatch"
+            android:text="批量添加N个账号" />
+
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="addManyAccountUsePreMethod"
+            android:text="使用原来的方式批量添加账号" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="acompileStatementAndBeginTx"
+            android:text="预编译sql与开启事务批量添加账号" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="toOneTest"
+            android:text="to one 测试" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="testCustomerToOrders"
+            android:text="to many 测试" />
+
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="testOrderToCustomer"
+            android:text="test Order To Customer" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="testUpdate"
+            android:text="test Update" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="queryToOneTest"
+            android:text="一对一查询关系" />
+
+
+    </LinearLayout>
+
+</ScrollView>

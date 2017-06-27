@@ -25,7 +25,7 @@ import java.util.List;
  */
 public final class MigrationHelper {
 
-    public static boolean DEBUG = false;
+    public static boolean DEBUG = true;
     private static String TAG = "MigrationHelper";
     private static final String SQLITE_MASTER = "sqlite_master";
     private static final String SQLITE_TEMP_MASTER = "sqlite_temp_master";

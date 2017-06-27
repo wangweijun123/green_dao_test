@@ -25,8 +25,12 @@ import org.greenrobot.greendao.example.NotesAdapter;
 import org.greenrobot.greendao.example.Picture;
 import org.greenrobot.greendao.example.User;
 import org.greenrobot.greendao.query.Query;
+import org.greenrobot.greendao.query.WhereCondition;
+import org.greenrobot.greendao.test.entityannotation.Customer;
+import org.greenrobot.greendao.test.entityannotation.Order;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -250,22 +254,35 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-
+    long pictureId;
+    long userId;
     public void toOneTest(View v) {
         DaoSession daoSession = ((App) getApplication()).getDaoSession();
         Picture picture = new Picture();
         picture.setIcon("http://cixon");
-        long id = daoSession.getPictureDao().insert(picture);
+        pictureId = daoSession.getPictureDao().insert(picture);
 
         User user = new User();
         user.setName("wxj");
-        user.setPictureId(id);
         user.setPicture(picture);
 
-
-        daoSession.getUserDao().insert(user);
+        userId = daoSession.getUserDao().insert(user);
 
     }
+
+    public void queryToOneTest(View v) {
+        DaoSession daoSession = ((App) getApplication()).getDaoSession();
+
+        Query<User> query = daoSession.getUserDao().queryBuilder().where(new WhereCondition.StringCondition("_id="+userId)).build();
+        List<User> users = query.list();
+        Log.d("DaoExample","users size:"+users.size());
+        for (int i=0; i<users.size(); i++) {
+            User user = users.get(i);
+            Log.d("DaoExample",user.getId() + ", "+user.getName()+
+            ", Picture id:"+user.getPicture().getId());
+        }
+    }
+
 
 
 
@@ -305,8 +322,57 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public void testCustomerToOrders(View v){
+
+        DaoSession daoSession = ((App) getApplication()).getDaoSession();
+        Customer customer = new Customer(null, "greenrobot");
+        daoSession.getCustomerDao().insert(customer);
+
+        addOrderToCustomer(customer);
+        addOrderToCustomer(customer);
+
+        List<Order> orders = customer.getOrders();
+        Log.d("DaoExample", "orders size: " + orders.size());
+    }
+
+    public void testOrderToCustomer(View v) {
+        DaoSession daoSession = ((App) getApplication()).getDaoSession();
+        Customer customer = new Customer(null, "greenrobot"+new Random().nextInt(100));
+        daoSession.insert(customer);
+
+        Order order = addOrderToCustomer(customer);
+        Customer customer2 = order.getCustomer();
+        Log.d("DaoExample",customer.getId() + ", "+ customer2.getId());
+        Log.d("DaoExample", "customer == customer2" + (customer == customer2));
+    }
 
 
+    public void testUpdate(View v) {
+        DaoSession daoSession = ((App) getApplication()).getDaoSession();
+        Customer customer = new Customer(null, "greenrobot"+new Random().nextInt(100));
+        daoSession.insert(customer);
+
+        addOrderToCustomer(customer);
+        List<Order> orders = customer.getOrders();
+
+        Order newOrder = new Order();
+        newOrder.setCustomer(customer);
+        daoSession.insert(newOrder);
+        orders.add(newOrder);
+        Log.d("DaoExample", "orders.size() :" + orders.size() );
+        customer.resetOrders();
+        List<Order> orders2 = customer.getOrders();
+        Log.d("DaoExample", "orders.size() :" + orders.size() +", orders2.size():"+orders2.size());
+    }
+
+
+    private Order addOrderToCustomer(Customer customer) {
+        DaoSession daoSession = ((App) getApplication()).getDaoSession();
+        Date date = new Date(System.currentTimeMillis() - ((long) (Math.random() * 1000 * 60 * 60 * 24 * 365)));
+        Order order = new Order(null, date, customer.getId());
+        daoSession.getOrderDao().insert(order);
+        return order;
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

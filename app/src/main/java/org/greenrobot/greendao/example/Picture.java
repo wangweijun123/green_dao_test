@@ -11,13 +11,13 @@ import org.greenrobot.greendao.annotation.Generated;
 @Entity
 public class Picture {
     @Id
-    private Long pictureId;
+    private Long id;
 
     private String icon;
 
-    @Generated(hash = 1734763618)
-    public Picture(Long pictureId, String icon) {
-        this.pictureId = pictureId;
+    @Generated(hash = 567752782)
+    public Picture(Long id, String icon) {
+        this.id = id;
         this.icon = icon;
     }
 
@@ -25,12 +25,12 @@ public class Picture {
     public Picture() {
     }
 
-    public Long getPictureId() {
-        return this.pictureId;
+    public Long getId() {
+        return this.id;
     }
 
-    public void setPictureId(Long pictureId) {
-        this.pictureId = pictureId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getIcon() {
